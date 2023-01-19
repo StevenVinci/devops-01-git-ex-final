@@ -3,14 +3,15 @@ var app = express();
 var path = require('path');
 var hbs = require('hbs');
 
-
+const months = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet"];
 // View Engine Setup
 app.set('views', path.join(__dirname))
 app.set('view engine', 'hbs')
 
 app.get('/', function (req, res) {
+	const date = new Date(Date.now());
 	res.render('./views/Home', {
-		title: 'My new title',
+		title: `My new title - ${months[date.getMonth()]}`,
 		cards: [
 			{
 				title: 'Our Changing Planet',
